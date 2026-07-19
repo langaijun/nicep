@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>有一个地方，你不需要表现给谁看</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --warm-bg: #faf6f1;
+    --warm-card: #fffdfb;
+    --warm-text: #4a4036;
+    --warm-muted: #8c7e6e;
+    --warm-accent: #c4a882;
+    --warm-accent-soft: #e8ddd0;
+    --warm-border: #e5ddd3;
+    --breath-color: rgba(196, 168, 130, 0.15);
+  }
+
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    background: var(--warm-bg);
+    color: var(--warm-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.8;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* 呼吸背景 */
+  .breath-bg {
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 600px; height: 600px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, var(--breath-color) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: breathe 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.4; }
+    50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 560px;
+    padding: 40px 24px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .screen {
+    display: none;
+    animation: fadeIn 0.8s ease;
+  }
+
+  .screen.active {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--warm-text);
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--warm-muted);
+    line-height: 2;
+  }
+
+  .question {
+    font-size: 1.1rem;
+    color: var(--warm-text);
+    line-height: 2;
+    font-weight: 400;
+  }
+
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  button, .btn {
+    background: var(--warm-card);
+    border: 1px solid var(--warm-border);
+    color: var(--warm-text);
+    padding: 16px 24px;
+    border-radius: 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-align: left;
+    line-height: 1.6;
+    font-family: inherit;
+  }
+
+  button:hover, .btn:hover {
+    background: var(--warm-accent-soft);
+    border-color: var(--warm-accent);
+    transform: translateY(-1px);
+  }
+
+  button:active {
+    transform: translateY(0);
+  }
+
+  .btn-primary {
+    background: var(--warm-text);
+    color: var(--warm-bg);
+    border-color: var(--warm-text);
+    text-align: center;
+  }
+
+  .btn-primary:hover {
+    background: #5a5046;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: none;
+    color: var(--warm-muted);
+    text-align: center;
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .btn-ghost:hover {
+    background: transparent;
+    color: var(--warm-text);
+  }
+
+  textarea, input[type="text"] {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--warm-border);
+    border-radius: 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--warm-card);
+    color: var(--warm-text);
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.8;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  textarea:focus, input:focus {
+    border-color: var(--warm-accent);
+  }
+
+  .hint {
+    font-size: 0.85rem;
+    color: var(--warm-muted);
+    text-align: center;
+  }
+
+  .response-box {
+    background: var(--warm-card);
+    border: 1px solid var(--warm-border);
+    border-radius: 16px;
+    padding: 20px;
+    line-height: 2;
+    color: var(--warm-text);
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--warm-border);
+    margin: 8px 0;
+  }
+
+  .memory-banner {
+    background: var(--warm-accent-soft);
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 0.9rem;
+    color: var(--warm-muted);
+    line-height: 1.8;
+    border-left: 3px solid var(--warm-accent);
+  }
+
+  .fade-delay {
+    animation: fadeIn 1.2s ease 0.3s both;
+  }
+
+  .breathing-circle {
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--breath-color), transparent);
+    animation: breathe 6s ease-in-out infinite;
+  }
+
+  .allow-item {
+    padding: 16px;
+    background: var(--warm-card);
+    border: 1px solid var(--warm-border);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    transition: all 0.5s ease;
+  }
+
+  .allow-item.allowed {
+    background: var(--warm-accent-soft);
+    border-color: var(--warm-accent);
+  }
+
+  .allow-item .allow-text {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .allow-item .allow-feedback {
+    display: none;
+    font-size: 0.95rem;
+    color: var(--warm-muted);
+    padding-top: 12px;
+    border-top: 1px solid var(--warm-border);
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  .allow-item.allowed .allow-feedback {
+    display: block;
+    animation: fadeIn 0.8s ease;
+  }
+
+  .exit-quote {
+    font-size: 1.25rem;
+    line-height: 2;
+    color: var(--warm-text);
+    text-align: center;
+    padding: 32px 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  .small-text {
+    font-size: 0.85rem;
+    color: var(--warm-muted);
+  }
+
+  /* 拆解展示 */
+  .breakdown-box {
+    background: var(--warm-accent-soft);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 16px 0;
+    border-left: 4px solid var(--warm-accent);
+  }
+
+  .breakdown-box .label {
+    font-size: 0.8rem;
+    color: var(--warm-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .breakdown-box .content {
+    font-size: 1.1rem;
+    color: var(--warm-text);
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+  <div class="breath-bg"></div>
+
+  <div class="container">
+
+    <!-- ========== 首页入口 ========== -->
+    <div class="screen active" id="screen-home">
+      <div id="memory-area"></div>
+      <h1>有一个地方，<br>你不需要表现给谁看。</h1>
+      <p class="subtitle">你现在是什么状态？<br>不用想太多，选一个最靠近的——</p>
+      <div class="btn-group">
+        <button onclick="chooseState('noisy')">脑子里很吵，停不下来</button>
+        <button onclick="chooseState('empty')">什么都不想做，觉得没劲</button>
+        <button onclick="chooseState('busy')">觉得自己在瞎忙，但不知道为了什么</button>
+        <button onclick="chooseState('okay')">还行，就是想待一会儿</button>
+      </div>
+      <p class="hint">没有标准答案，也没有人在打分。</p>
+    </div>
+
+    <!-- ========== 接纳路径：身体锚点 ========== -->
+    <div class="screen" id="screen-anchor">
+      <div class="breathing-circle"></div>
+      <p class="question" style="text-align:center">现在，允许你的肩膀沉下去……<br>不用刻意放松，只是知道它在那里。</p>
+      <p class="subtitle" style="text-align:center">跟着这个圆圈的节奏，呼吸三次。</p>
+      <button class="btn-primary" onclick="goToAllow()" style="margin-top:20px">我准备好了</button>
+    </div>
+
+    <!-- ========== 接纳路径：三层允许 ========== -->
+    <div class="screen" id="screen-allow">
+      <p class="question">现在，你可以暂时放下"我必须找到意义"这句话。</p>
+      <div class="allow-item" id="allow-1">
+        <div class="allow-text">我允许自己暂时不知道方向</div>
+        <button onclick="allowThis(1)">我允许</button>
+        <div class="allow-feedback">好，就这样，多待一会儿。</div>
+      </div>
+      <div class="allow-item" id="allow-2">
+        <div class="allow-text">我允许自己只对一件事感兴趣5分钟</div>
+        <button onclick="allowThis(2)">我允许</button>
+        <div class="allow-feedback">好，就这样，多待一会儿。</div>
+      </div>
+      <div class="allow-item" id="allow-3">
+        <div class="allow-text">我允许自己不做最顶尖的那5%</div>
+        <button onclick="allowThis(3)">我允许</button>
+        <div class="allow-feedback">好，就这样，多待一会儿。</div>
+      </div>
+      <button class="btn-ghost" id="btn-allow-next" style="display:none" onclick="goToAcceptNarrative()">继续 →</button>
+    </div>
+
+    <!-- ========== 接纳路径：轻量叙事 ========== -->
+    <div class="screen" id="screen-accept-narrative">
+      <p class="question">如果现在完全没人评价你，包括你自己，<br>你会怎么形容今天的自己？</p>
+      <textarea id="accept-input" placeholder="随便说点什么，这里没有对错……"></textarea>
+      <button class="btn-primary" onclick="submitAcceptNarrative()">就这样</button>
+    </div>
+
+    <!-- ========== 启动路径：最小意义探测 ========== -->
+    <div class="screen" id="screen-spark">
+      <p class="question">过去一周，有一个瞬间，你觉得自己<strong>不是在完成任务</strong>，而是真的想那样做？<br>哪怕只有5秒钟。</p>
+      <textarea id="spark-input" placeholder="那个瞬间，你在做什么？"></textarea>
+      <button class="btn-primary" onclick="submitSpark()">就是那个</button>
+    </div>
+
+    <!-- ========== 启动路径：身体感受追问 ========== -->
+    <div class="screen" id="screen-spark-body">
+      <p class="question" id="spark-body-question"></p>
+      <textarea id="spark-body-input" placeholder="也许是轻的、暖的、松的……"></textarea>
+      <button class="btn-primary" onclick="submitSparkBody()">是这样的</button>
+    </div>
+
+    <!-- ========== 启动路径：行动拆解 ========== -->
+    <div class="screen" id="screen-breakdown">
+      <p class="question">如果这件事做5分钟就算赢，<br>你现在愿意把它拆到<strong>荒谬地小</strong>吗？</p>
+      <div class="breakdown-box">
+        <div class="label">你说你想做的</div>
+        <div class="content" id="breakdown-original"></div>
+      </div>
+      <div class="breakdown-box">
+        <div class="label">荒谬地小版本</div>
+        <div class="content" id="breakdown-tiny"></div>
+      </div>
+      <p class="subtitle">不需要完成它，只需要允许自己开始。</p>
+      <button class="btn-primary" onclick="goToDone()">这个我可以</button>
+    </div>
+
+    <!-- ========== "我做了"确认 ========== -->
+    <div class="screen" id="screen-done">
+      <p class="question" style="text-align:center">如果你已经做了那个"荒谬地小"的动作，<br>或者只是允许自己待到了这里——</p>
+      <button class="btn-primary" onclick="submitDone()" style="margin: 20px auto; display:block; min-width: 200px; text-align:center">我做了</button>
+      <button class="btn-ghost" onclick="skipDone()">还没做，但我想先休息</button>
+    </div>
+
+    <!-- ========== 苏格拉底式提问（条件触发） ========== -->
+    <div class="screen" id="screen-socratic">
+      <p class="question" id="socratic-question"></p>
+      <textarea id="socratic-input" placeholder="慢慢说，不用急着找到答案……"></textarea>
+      <button class="btn-primary" onclick="submitSocratic()">换个说法，是这样的</button>
+    </div>
+
+    <!-- ========== 退出仪式 ========== -->
+    <div class="screen" id="screen-exit">
+      <div class="exit-quote" id="exit-quote"></div>
+      <div class="divider"></div>
+      <p class="subtitle" style="text-align:center">你可以走了，也可以再待一会儿。<br>这里不会催你。</p>
+      <button class="btn-ghost" onclick="stayLonger()">再待一会儿</button>
+      <button class="btn-ghost" onclick="goHome()">我走了</button>
+    </div>
+
+    <!-- ========== 再待一会儿：呼吸页 ========== -->
+    <div class="screen" id="screen-stay">
+      <div class="breathing-circle" style="width:200px;height:200px"></div>
+      <p class="subtitle" style="text-align:center">就这样，呼吸。<br>什么都不需要做。</p>
+      <button class="btn-ghost" onclick="goHome()" style="margin-top:40px">我走了</button>
+    </div>
+
+  </div>
+
+<script>
+// ========== 状态管理 ==========
+let currentPath = ''; // 'accept' or 'spark'
+let sessionData = {
+  state: '',
+  acceptText: '',
+  sparkText: '',
+  sparkBodyText: '',
+  socraticText: '',
+  done: false,
+  timestamp: null
+};
+
+// 禁用词检测（用于触发苏格拉底提问）
+const negativeWords = ['失败', '没用', '没意义', '糟糕', '不行', '太差', '后悔', '废物', '一事无成', '白忙'];
+
+// ========== 工具函数 ==========
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function hasNegativeWord(text) {
+  return negativeWords.some(w => text.includes(w));
+}
+
+function getTodayKey() {
+  const d = new Date();
+  return `meaning_session_${d.getFullYear()}_${d.getMonth()}_${d.getDate()}`;
+}
+
+function getYesterdayKey() {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return `meaning_session_${d.getFullYear()}_${d.getMonth()}_${d.getDate()}`;
+}
+
+function saveSession() {
+  sessionData.timestamp = Date.now();
+  localStorage.setItem(getTodayKey(), JSON.stringify(sessionData));
+}
+
+function loadMemory() {
+  const yk = getYesterdayKey();
+  const yesterday = localStorage.getItem(yk);
+  const area = document.getElementById('memory-area');
+  if (yesterday) {
+    try {
+      const data = JSON.parse(yesterday);
+      let text = '';
+      if (data.sparkText) text = data.sparkText;
+      else if (data.acceptText) text = data.acceptText;
+      if (text) {
+        area.innerHTML = `<div class="memory-banner">昨天你说："${text.substring(0, 40)}${text.length>40?'...':''}"<br>今天你想从哪开始？</div>`;
+      }
+    } catch(e) {}
+  }
+}
+
+// ========== 首页 ==========
+loadMemory();
+
+function chooseState(state) {
+  sessionData.state = state;
+  // 1,2 → 接纳路径; 3,4 → 启动路径
+  if (state === 'noisy' || state === 'empty') {
+    currentPath = 'accept';
+    showScreen('screen-anchor');
+  } else {
+    currentPath = 'spark';
+    showScreen('screen-spark');
+  }
+}
+
+// ========== 接纳路径 ==========
+function goToAllow() {
+  showScreen('screen-allow');
+}
+
+let allowedCount = 0;
+function allowThis(n) {
+  const el = document.getElementById('allow-' + n);
+  if (!el.classList.contains('allowed')) {
+    el.classList.add('allowed');
+    allowedCount++;
+    // 禁用按钮
+    const btn = el.querySelector('button');
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+    btn.style.cursor = 'default';
+  }
+  if (allowedCount >= 1) {
+    document.getElementById('btn-allow-next').style.display = 'block';
+  }
+}
+
+function goToAcceptNarrative() {
+  showScreen('screen-accept-narrative');
+}
+
+function submitAcceptNarrative() {
+  const val = document.getElementById('accept-input').value.trim();
+  sessionData.acceptText = val;
+
+  if (hasNegativeWord(val)) {
+    // 触发苏格拉底提问
+    const word = negativeWords.find(w => val.includes(w));
+    document.getElementById('socratic-question').innerHTML = 
+      `你刚才用了"${word}"这个词——<br>如果不用这个词，你会怎么描述这件事？`;
+    showScreen('screen-socratic');
+    return;
+  }
+
+  goToExit();
+}
+
+// ========== 启动路径 ==========
+function submitSpark() {
+  const val = document.getElementById('spark-input').value.trim();
+  if (!val) {
+    // 允许空，但给一个温柔的提示
+    document.getElementById('spark-input').placeholder = "说不出来也没关系，可以先写一个字……";
+    return;
+  }
+  sessionData.sparkText = val;
+  document.getElementById('spark-body-question').innerHTML = 
+    `你说："${val}"<br><br>那个瞬间，你的身体是什么感觉？`;
+  showScreen('screen-spark-body');
+}
+
+function submitSparkBody() {
+  const val = document.getElementById('spark-body-input').value.trim();
+  sessionData.sparkBodyText = val;
+
+  // 生成荒谬地小的拆解
+  const original = sessionData.sparkText;
+  const tiny = generateTinyVersion(original);
+  document.getElementById('breakdown-original').textContent = original;
+  document.getElementById('breakdown-tiny').textContent = tiny;
+
+  showScreen('screen-breakdown');
+}
+
+function generateTinyVersion(text) {
+  // 简单的关键词匹配拆解
+  const t = text.toLowerCase();
+  if (t.includes('写') || t.includes('文字') || t.includes('日记') || t.includes('文章')) {
+    return '打开文档，写一句话，就算赢。';
+  }
+  if (t.includes('跑') || t.includes('动') || t.includes('运动') || t.includes('健身') || t.includes('走')) {
+    return '穿上运动鞋，站在门口，就算赢。';
+  }
+  if (t.includes('画') || t.includes('拍') || t.includes('照片') || t.includes('视频')) {
+    return '拿起笔/手机，做一个动作，就算赢。';
+  }
+  if (t.includes('读') || t.includes('书')) {
+    return '翻开书，读一行，就算赢。';
+  }
+  if (t.includes('说') || t.includes('聊') || t.includes('联系') || t.includes('打电话')) {
+    return '打开通讯录，找到名字，就算赢。';
+  }
+  if (t.includes('学') || t.includes('练')) {
+    return '打开那个页面/视频，看30秒，就算赢。';
+  }
+  if (t.includes('吃') || t.includes('做') || t.includes('煮') || t.includes('菜')) {
+    return '把食材拿出来，放在桌上，就算赢。';
+  }
+  if (t.includes('整理') || t.includes('打扫') || t.includes('收拾')) {
+    return '拿起一件东西，放回原位，就算赢。';
+  }
+  return '只做这件事的开头5分钟，就算赢。';
+}
+
+function goToDone() {
+  showScreen('screen-done');
+}
+
+function submitDone() {
+  sessionData.done = true;
+  saveSession();
+  goToExit();
+}
+
+function skipDone() {
+  sessionData.done = false;
+  saveSession();
+  goToExit();
+}
+
+// ========== 苏格拉底 ==========
+function submitSocratic() {
+  const val = document.getElementById('socratic-input').value.trim();
+  sessionData.socraticText = val;
+  saveSession();
+  goToExit();
+}
+
+// ========== 退出仪式 ==========
+function goToExit() {
+  const quote = generateExitQuote();
+  document.getElementById('exit-quote').textContent = quote;
+  showScreen('screen-exit');
+}
+
+function generateExitQuote() {
+  const path = currentPath;
+  const state = sessionData.state;
+
+  // 根据路径和状态组合退出语
+  const quotes = [];
+
+  if (path === 'accept') {
+    if (sessionData.acceptText && sessionData.acceptText.length > 0) {
+      quotes.push(`"${sessionData.acceptText.substring(0, 20)}"——这是你今天对自己的描述。你看，意义不是想出来的，是你刚才在回答里活出来的。`);
+    }
+    quotes.push('你今天允许了自己"不知道"，这本身就是一种清晰。');
+    quotes.push('好，就这样，多待一会儿。这里不会催你。');
+    quotes.push('你不是找不到意义。你只是还没允许自己定义它。');
+  } else {
+    if (sessionData.sparkText) {
+      quotes.push(`你记得那个"${sessionData.sparkText.substring(0, 15)}..."的瞬间——意义不在终点，在你允许自己"这样也行"的那一秒。`);
+    }
+    if (sessionData.done) {
+      quotes.push('这个星期，你允许自己这样活了一次。不需要更多。');
+    } else {
+      quotes.push('还没做，也没关系。允许自己先待在这里。');
+    }
+    quotes.push('你看，意义不是想出来的，是你刚才在回答里活出来的。');
+  }
+
+  // 如果有苏格拉底回答，优先用这个
+  if (sessionData.socraticText) {
+    quotes.push(`你说"${sessionData.socraticText.substring(0, 25)}..."——你看，换了一个词，这件事的样子就变了。`);
+  }
+
+  // 随机选一条，但尽量让同一用户每次来有不同体验
+  const seed = Date.now() % quotes.length;
+  return quotes[seed];
+}
+
+function stayLonger() {
+  showScreen('screen-stay');
+}
+
+function goHome() {
+  // 重置当前会话（但不删历史）
+  sessionData = {
+    state: '',
+    acceptText: '',
+    sparkText: '',
+    sparkBodyText: '',
+    socraticText: '',
+    done: false,
+    timestamp: null
+  };
+  currentPath = '';
+  allowedCount = 0;
+  // 重置输入
+  document.getElementById('accept-input').value = '';
+  document.getElementById('spark-input').value = '';
+  document.getElementById('spark-body-input').value = '';
+  document.getElementById('socratic-input').value = '';
+  document.querySelectorAll('.allow-item').forEach(el => {
+    el.classList.remove('allowed');
+    const btn = el.querySelector('button');
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+  });
+  document.getElementById('btn-allow-next').style.display = 'none';
+
+  showScreen('screen-home');
+  loadMemory();
+}
+</script>
+</body>
+</html>

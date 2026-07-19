@@ -1,0 +1,145 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+
+const pageTitle = "NiceP — A Gentle Relaxation Space (No Meditation Required)";
+const description = "NiceP is a free, pressure-free relaxation space. No meditation, no check-ins, no scoring. Just breathing, gentle guidance, and a quiet place to be.";
+
+const layers = [
+  { size: 600, duration: 8, delay: 0, opacity: 0.15 },
+  { size: 450, duration: 7, delay: 2, opacity: 0.12 },
+  { size: 350, duration: 9, delay: 4, opacity: 0.08 },
+  { size: 250, duration: 6, delay: 1, opacity: 0.06 },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is NiceP different from other relaxation apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most relaxation apps like Calm or Headspace ask you to meditate, follow guided sessions, or track your progress. NiceP requires none of that. It's a gentle space where you simply show up, follow a few soft prompts, and leave when you're ready. No meditation, no scoring, no daily check-ins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is NiceP free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, NiceP is completely free. No subscription, no hidden costs, no premium tier. Just open it and use it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to create an account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. NiceP requires no signup, no email, no personal data. Everything stays in your browser."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What can I expect when I use NiceP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You'll choose how you're feeling, then follow a gentle guided flow: body-awareness breathing, a 'permission' exercise to let go of pressure, and optionally a short writing prompt. The whole experience takes 3-5 minutes and you can leave at any time."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  lang="en"
+  ogLocale="en_US"
+  canonicalPath="/relax"
+  hreflangAlternates={{ "en": "/relax" }}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Breath Background -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    {layers.map((layer) => (
+      <div
+        class="breath-circle"
+        style={`width:${layer.size}px;height:${layer.size}px;background:radial-gradient(circle, rgba(196, 168, 130,${layer.opacity}) 0%, transparent 70%);animation:breathe ${layer.duration}s ease-in-out ${layer.delay}s infinite;`}
+      />
+    ))}
+  </div>
+
+  <!-- Back link -->
+  <nav class="fixed top-4 left-4 z-10">
+    <a href="/" class="text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);text-decoration:none;">← Home</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 w-full max-w-[560px] px-6 py-10 min-h-screen flex flex-col justify-center mx-auto">
+
+    <!-- Hero -->
+    <div class="mb-8 fade-in fade-in-delay-1">
+      <h1 class="text-2xl font-normal tracking-wide mb-2" style="color:var(--warm-text);">Gentle relaxation.</h1>
+      <h1 class="text-2xl font-normal tracking-wide" style="color:var(--warm-text);">No meditation required.</h1>
+    </div>
+
+    <p class="text-base leading-8 mb-10 fade-in fade-in-delay-2" style="color:var(--warm-muted);">
+      NiceP is a pressure-free space where you can slow down without doing anything "productive." No guided sessions to follow. No progress to track. Just a quiet place to breathe and be.
+    </p>
+
+    <!-- How it works -->
+    <h2 class="text-lg font-normal mb-6 fade-in fade-in-delay-3" style="color:var(--warm-text);">How it works</h2>
+
+    <div class="flex flex-col gap-4 mb-10">
+      <div class="rounded-2xl border px-6 py-5 fade-in fade-in-delay-3" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-xs mb-1" style="color:var(--warm-accent);">Step 1</p>
+        <p class="text-sm font-medium mb-1" style="color:var(--warm-text);">Choose how you feel</p>
+        <p class="text-sm" style="color:var(--warm-muted);">Noisy mind? Empty? Busy? Okay? Pick the one that matches. There's no wrong answer.</p>
+      </div>
+
+      <div class="rounded-2xl border px-6 py-5 fade-in fade-in-delay-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-xs mb-1" style="color:var(--warm-accent);">Step 2</p>
+        <p class="text-sm font-medium mb-1" style="color:var(--warm-text);">Follow gentle guidance</p>
+        <p class="text-sm" style="color:var(--warm-muted);">Body-awareness breathing. Permission exercises. Tiny actions. Each step is optional — you can stop anytime.</p>
+      </div>
+
+      <div class="rounded-2xl border px-6 py-5 fade-in fade-in-delay-5" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-xs mb-1" style="color:var(--warm-accent);">Step 3</p>
+        <p class="text-sm font-medium mb-1" style="color:var(--warm-text);">Leave when you're ready</p>
+        <p class="text-sm" style="color:var(--warm-muted);">A gentle farewell message. No score, no streak, no "come back tomorrow." Just come back whenever you need to.</p>
+      </div>
+    </div>
+
+    <!-- What makes it different -->
+    <h2 class="text-lg font-normal mb-4 fade-in fade-in-delay-5" style="color:var(--warm-text);">What makes NiceP different</h2>
+
+    <div class="flex flex-col gap-3 mb-10 fade-in fade-in-delay-5">
+      <div class="flex items-start gap-3">
+        <span style="color:var(--warm-accent);">✦</span>
+        <p class="text-sm" style="color:var(--warm-muted);"><strong style="color:var(--warm-text);">No meditation</strong> — other apps ask you to sit still and focus. NiceP just asks you to be.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span style="color:var(--warm-accent);">✦</span>
+        <p class="text-sm" style="color:var(--warm-muted);"><strong style="color:var(--warm-text);">No tracking</strong> — no streaks, no daily check-ins, no guilt for missing a day.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span style="color:var(--warm-accent);">✦</span>
+        <p class="text-sm" style="color:var(--warm-muted);"><strong style="color:var(--warm-text);">No signup</strong> — open your browser, use it, close it. That's it.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span style="color:var(--warm-accent);">✦</span>
+        <p class="text-sm" style="color:var(--warm-muted);"><strong style="color:var(--warm-text);">100% free</strong> — no subscription, no premium tier, no ads.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="/app"
+      class="fade-in fade-in-delay-5 w-full rounded-2xl border px-6 py-4 text-center text-base transition-all duration-500 hover:-translate-y-px block"
+      style="background:var(--warm-accent-soft);border-color:var(--warm-accent);color:var(--warm-text);text-decoration:none;">
+      Start relaxing →
+    </a>
+  </main>
+</BaseLayout>

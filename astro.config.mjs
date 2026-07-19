@@ -1,0 +1,11 @@
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+
+export default defineConfig({
+  site: "https://nicep.vercel.app",
+  integrations: [tailwind(), mdx(), sitemap()],
+  outDir: "./dist",
+  output: "static",
+});

@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import zhCN from "../i18n/locales/zh-CN.json";
+
+const pageTitle = "有一个地方，你不需要表现给谁看";
+const description = "NiceP — 一个无压力的数字空间。不需要打分，不需要比较，不需要强制。只要待一会儿就好。";
+const alternates = { "zh-CN": "/", "en": "/en", "es": "/es" };
+
+const layers = [
+  { size: 600, duration: 8, delay: 0, opacity: 0.15 },
+  { size: 450, duration: 7, delay: 2, opacity: 0.12 },
+  { size: 350, duration: 9, delay: 4, opacity: 0.08 },
+  { size: 250, duration: 6, delay: 1, opacity: 0.06 },
+];
+const accentColor = "196, 168, 130";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "NiceP 是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NiceP 是一个免费的在线放松空间。当你感到焦虑、疲惫或迷茫时，这里提供一个安静的地方让你停下来呼吸。不需要冥想，不需要打卡，不需要做任何'有用的事'。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "NiceP 需要注册吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不需要。打开即用，免费、无需注册、不收集个人信息。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "NiceP 适合什么人？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "工作压力大的上班族、备考焦虑的学生、需要情绪休息的任何人。支持中文、英文、西班牙文。"
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  lang="zh-CN"
+  ogLocale="zh_CN"
+  canonicalPath="/"
+  hreflangAlternates={alternates}
+>
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Breath Background -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    {layers.map((layer) => (
+      <div
+        class="breath-circle"
+        style={`width:${layer.size}px;height:${layer.size}px;background:radial-gradient(circle, rgba(${accentColor},${layer.opacity}) 0%, transparent 70%);animation:breathe ${layer.duration}s ease-in-out ${layer.delay}s infinite;`}
+      />
+    ))}
+  </div>
+
+  <!-- Language Switcher -->
+  <nav class="fixed top-4 right-4 z-10 flex gap-1.5">
+    <span class="rounded-lg px-2 py-1 text-xs" style="background:var(--warm-accent-soft);color:var(--warm-text);border:1px solid var(--warm-accent);">中文</span>
+    <a href="/en" class="rounded-lg px-2 py-1 text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);border:1px solid transparent;text-decoration:none;">EN</a>
+    <a href="/es" class="rounded-lg px-2 py-1 text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);border:1px solid transparent;text-decoration:none;">ES</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 w-full max-w-[560px] px-6 py-10 min-h-screen flex flex-col justify-center mx-auto">
+
+    <!-- Hero -->
+    <div class="flex flex-col gap-2 mb-8">
+      <h1 class="text-2xl font-normal tracking-wide fade-in fade-in-delay-1" style="color:var(--warm-text);">{zhCN.home.title1}</h1>
+      <h1 class="text-2xl font-normal tracking-wide fade-in fade-in-delay-2" style="color:var(--warm-text);">{zhCN.home.title2}</h1>
+      <h1 class="text-2xl font-normal tracking-wide fade-in fade-in-delay-3" style="color:var(--warm-text);">{zhCN.home.title3}</h1>
+    </div>
+
+    <!-- Tagline -->
+    <p class="text-base leading-8 mb-10 fade-in fade-in-delay-4" style="color:var(--warm-muted);">{description}</p>
+
+    <!-- Feature cards -->
+    <div class="flex flex-col gap-4 mb-10 fade-in fade-in-delay-4">
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">呼吸引导 · 允许练习 · 微小行动</p>
+      </div>
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">无评分 · 无比较 · 无强制</p>
+      </div>
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">免费 · 无需注册 · 打开即用</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="/app"
+      class="fade-in fade-in-delay-5 w-full rounded-2xl border px-6 py-4 text-center text-base transition-all duration-500 hover:-translate-y-px block"
+      style="background:var(--warm-accent-soft);border-color:var(--warm-accent);color:var(--warm-text);text-decoration:none;">
+      进入这个空间 →
+    </a>
+
+    <!-- Blog link -->
+    <div class="mt-8 text-center fade-in fade-in-delay-5">
+      <a href="/blog" class="text-xs" style="color:var(--warm-muted);text-decoration:none;opacity:0.6;">
+        阅读放松指南 →
+      </a>
+    </div>
+
+    <!-- SEO content -->
+    <section class="mt-16 fade-in fade-in-delay-5">
+      <h2 class="text-lg font-normal mb-4" style="color:var(--warm-text);">关于 NiceP</h2>
+      <p class="text-sm leading-7 mb-4" style="color:var(--warm-muted);">
+        NiceP 是一个免费的在线放松空间。当你感到焦虑、疲惫或迷茫时，这里提供一个安静的地方让你停下来呼吸。不需要冥想，不需要打卡，不需要做任何"有用的事"。只要待一会儿就好。
+      </p>
+      <p class="text-sm leading-7 mb-4" style="color:var(--warm-muted);">
+        这里没有评分系统，没有进度条，没有排行榜。我们不收集你的数据，不要求你打卡签到。这不是一个"自我提升工具"，而是一个"允许自己待一会儿"的地方。
+      </p>
+      <p class="text-sm leading-7" style="color:var(--warm-muted);">
+        适合人群：工作压力大的上班族、备考焦虑的学生、需要情绪休息的任何人。支持中文、英文、西班牙文。
+      </p>
+    </section>
+  </main>
+</BaseLayout>

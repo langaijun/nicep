@@ -1,0 +1,65 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  lang: string;
+  ogLocale: string;
+  canonicalPath: string;
+  hreflangAlternates: Record<string, string>;
+}
+
+const { title, description, lang, ogLocale, canonicalPath, hreflangAlternates } = Astro.props;
+const siteUrl = "https://nicep.vercel.app";
+const canonicalUrl = siteUrl + canonicalPath;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- Canonical -->
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- hreflang alternates -->
+  {Object.entries(hreflangAlternates).map(([hreflang, href]) => (
+    <link rel="alternate" hreflang={hreflang} href={siteUrl + href} />
+  ))}
+  <link rel="alternate" hreflang="x-default" href={siteUrl + "/"} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:locale" content={ogLocale} />
+  <meta property="og:site_name" content="NiceP" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "NiceP",
+    "url": siteUrl,
+    "description": description,
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  })} />
+</head>
+<body data-lang={lang}>
+  <slot />
+</body>
+</html>

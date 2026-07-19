@@ -1,0 +1,251 @@
+{
+  "home": {
+    "title1": "No es que hayas perdido el sentido.",
+    "title2": "Es que aún no te has",
+    "title3": "permitido definirlo.",
+    "statusPrompt": "¿Cómo te sientes ahora mismo?",
+    "state": {
+      "noisy": "Mi mente no deja de dar vueltas",
+      "empty": "No quiero hacer nada, nada me motiva",
+      "busy": "Siento que estoy ocupado/a pero no sé en qué",
+      "okay": "Estoy bien, solo quiero quedarme un rato"
+    },
+    "lastWord": "La última vez dijiste: \"{{text}}\"",
+    "lastWordFollow": "¿Eso sigue contigo?"
+  },
+  "anchor": {
+    "points": {
+      "shoulders": {
+        "text": "Ahora, deja que tus hombros se hundan…",
+        "sub": "Sin forzar. Solo nota que están ahí."
+      },
+      "feet": {
+        "text": "Siente tus pies contra el suelo…",
+        "sub": "La gravedad te sostiene. No necesitas hacer nada más."
+      },
+      "palms": {
+        "text": "Fíjate si tus palmas están cálidas o frescas…",
+        "sub": "No necesitas cambiarlo. Solo obsérvalo."
+      },
+      "abdomen": {
+        "text": "Lleva suavemente tu atención al vientre…",
+        "sub": "Sube y baja con cada respiración."
+      },
+      "eyebrow": {
+        "text": "Fíjate si tienes el ceño fruncido…",
+        "sub": "No necesitas relajarlo. Solo saber que está ahí."
+      },
+      "back": {
+        "text": "Siente tu espalda contra la silla…",
+        "sub": "Te está sosteniendo. No tienes que sostenerte solo/a."
+      },
+      "breath": {
+        "text": "No necesitas ajustar tu respiración. Solo obsérvala…",
+        "sub": "Entra. Sale."
+      },
+      "jaw": {
+        "text": "Fíjate si tienes la mandíbula apretada…",
+        "sub": "No necesitas soltarla. Solo obsérvalo."
+      }
+    },
+    "breathePrompt": "Sigue el ritmo de este círculo. Respira tres veces.",
+    "ready": "Estoy listo/a"
+  },
+  "allow": {
+    "intro": "Por ahora, puedes dejar de lado la idea de \"tengo que encontrar el sentido\".",
+    "items": [
+      "Me permito no saber el rumbo ahora mismo",
+      "Me permito interesarme en una sola cosa por 5 minutos",
+      "Me permito no ser de los mejores"
+    ],
+    "allowBtn": "Me lo permito",
+    "allowed": "Bien. Quédate aquí un ratito más.",
+    "continue": "Continuar →"
+  },
+  "acceptNarrative": {
+    "prompt1": "Si nadie te estuviera juzgando ahora, ni siquiera tú,",
+    "prompt2": "¿cómo te describirías hoy?",
+    "placeholder": "Di lo que sea. Aquí no hay respuestas correctas o incorrectas…",
+    "submit": "Así es"
+  },
+  "spark": {
+    "prompt1": "En la última semana, hubo un momento en que sentiste que",
+    "promptEmphasis": "no estabas cumpliendo una tarea",
+    "prompt2": ", sino que de verdad querías hacerlo.",
+    "prompt3": "Aunque hayan sido solo 5 segundos.",
+    "placeholder": "¿Qué estabas haciendo en ese momento?",
+    "placeholderFallback": "¿No sabes cómo decirlo? No pasa nada. Escribe una palabra…",
+    "submit": "Ese fue"
+  },
+  "sparkBody": {
+    "recall": "Dijiste: \"{{text}}\"",
+    "prompt": "En ese momento, ¿qué sentía tu cuerpo?",
+    "placeholder": "Tal vez ligero, cálido, relajado…",
+    "submit": "Así fue"
+  },
+  "breakdown": {
+    "prompt1": "Si hacer esto durante 5 minutos cuenta como victoria,",
+    "prompt2": "¿estarías dispuesto/a a reducirlo a algo",
+    "promptEmphasis": "absurdamente pequeño",
+    "prompt3": "?",
+    "youSaid": "Lo que querías hacer",
+    "tinyVersion": "La versión absurdamente pequeña",
+    "encourage": "No necesitas terminarlo. Solo permítete empezar.",
+    "submit": "Esto sí puedo"
+  },
+  "done": {
+    "prompt1": "Si ya hiciste eso \"absurdamente pequeño\",",
+    "prompt2": "o simplemente te permitiste estar aquí —",
+    "didIt": "Lo hice",
+    "rest": "Aún no, pero quiero descansar primero"
+  },
+  "socratic": {
+    "question": "Usaste la palabra \"{{word}}\" —\nSi no pudieras usar esa palabra, ¿cómo describirías esto?",
+    "placeholder": "Tómate tu tiempo. No hay prisa por encontrar la respuesta…",
+    "submit": "Dicho de otra forma, es así"
+  },
+  "exit": {
+    "feltLighter": "Hoy me siento un poco más ligero/a",
+    "feltLighterDone": "✓ Un poquito más ligero/a hoy",
+    "stayMore": "Quedarme un rato más",
+    "leave": "Me voy",
+    "quotes": {
+      "acceptSelfDesc": "\"{{text}}\" — así te describiste hoy.\nEl sentido no se piensa.\nSe vive,\nahí mismo, en tu respuesta.",
+      "acceptAllowedUnknown": "Hoy te permitiste \"no saber\" — y eso ya es una forma de claridad.",
+      "acceptStay": "Bien. Quédate un rato más. Aquí nadie te va a apurar.",
+      "acceptDefine": "No es que hayas perdido el sentido. Es que aún no te has permitido definirlo.",
+      "sparkRecall": "Recuerdas ese momento de \"{{text}}...\" — el sentido no está en la meta. Está en el segundo en que te permites pensar \"esto también está bien\".",
+      "sparkDone": "Esta semana te permitiste vivir así una vez. No necesitas más.",
+      "sparkNotYet": "Aún no lo hiciste — y también está bien. Permítete simplemente estar aquí.",
+      "meaningLived": "El sentido no se piensa.\nSe vive,\nahí mismo, en tu respuesta.",
+      "socraticReframe": "Dijiste \"{{text}}...\" — ¿ves? Cambias una palabra y todo se ve diferente."
+    }
+  },
+  "stay": {
+    "breathe1": "Solo respira.",
+    "breathe2": "No hay nada que hacer.",
+    "leave": "Me voy"
+  },
+  "wordsWall": {
+    "title": "Tus palabras",
+    "back": "Volver",
+    "empty1": "Aún no has dejado ninguna palabra.",
+    "empty2": "No pasa nada. Puedes volver cuando quieras.",
+    "recentDays": "Palabras de los últimos {{count}} días",
+    "accept": "Aceptación",
+    "spark": "Chispa",
+    "socratic": "Reformulado",
+    "export": "Exportar como texto"
+  },
+  "memory": {
+    "negativeWords": [
+      "fracaso",
+      "inútil",
+      "sin sentido",
+      "terrible",
+      "no puedo",
+      "horrible",
+      "arrepentimiento",
+      "basura",
+      "nada",
+      "desperdicio"
+    ],
+    "exportAccept": "[Aceptación]",
+    "exportSpark": "[Chispa]",
+    "exportSocraticPrefix": "Reformulado: "
+  },
+  "tinyVersions": {
+    "keywords": {
+      "write": "Abre un documento, escribe una frase. Eso cuenta.",
+      "text": "Abre un documento, escribe una frase. Eso cuenta.",
+      "journal": "Abre un documento, escribe una frase. Eso cuenta.",
+      "run": "Ponte los zapatos, párate en la puerta. Eso cuenta.",
+      "walk": "Ponte los zapatos, párate en la puerta. Eso cuenta.",
+      "exercise": "Ponte los zapatos, párate en la puerta. Eso cuenta.",
+      "draw": "Toma un lápiz o el teléfono, haz un gesto. Eso cuenta.",
+      "read": "Abre un libro, lee una línea. Eso cuenta.",
+      "book": "Abre un libro, lee una línea. Eso cuenta.",
+      "phone": "Abre tus contactos, busca un nombre. Eso cuenta.",
+      "chat": "Abre tus contactos, busca un nombre. Eso cuenta.",
+      "study": "Abre esa página o video, mira 30 segundos. Eso cuenta.",
+      "practice": "Abre esa página o video, mira 30 segundos. Eso cuenta.",
+      "eat": "Saca los ingredientes, ponlos en la mesa. Eso cuenta.",
+      "clean": "Toma una cosa, ponla en su lugar. Eso cuenta.",
+      "tidy": "Toma una cosa, ponla en su lugar. Eso cuenta.",
+      "sleep": "Cierra los ojos, respira profundo tres veces. Eso cuenta.",
+      "rest": "Cierra los ojos, respira profundo tres veces. Eso cuenta.",
+      "music": "Abre un reproductor, elige una canción. Eso cuenta.",
+      "listen": "Abre un reproductor, elige una canción. Eso cuenta.",
+      "water": "Pon a hervir agua. Eso cuenta.",
+      "tea": "Pon a hervir agua. Eso cuenta.",
+      "coffee": "Pon a hervir agua. Eso cuenta.",
+      "go": "Ponte la chaqueta, abre la puerta. Eso cuenta.",
+      "stroll": "Ponte la chaqueta, abre la puerta. Eso cuenta.",
+      "think": "Toma un papel, escribe una palabra. Eso cuenta.",
+      "plan": "Toma un papel, escribe un paso. Eso cuenta.",
+      "sing": "Tararea una línea. Eso cuenta.",
+      "strum": "Abre la tapa, toca una nota. Eso cuenta.",
+      "shop": "Haz una lista, escribe una cosa. Eso cuenta.",
+      "fix": "Busca las herramientas, ponlas cerca. Eso cuenta.",
+      "deliver": "Escribe el nombre del destinatario. Eso cuenta.",
+      "journey": "Abre un mapa, mira un lugar. Eso cuenta.",
+      "yoga": "Extiende la esterilla, siéntate en ella. Eso cuenta.",
+      "meditate": "Extiende la esterilla, siéntate en ella. Eso cuenta.",
+      "email": "Abre tu bandeja, escribe un saludo. Eso cuenta.",
+      "search": "Abre un buscador, escribe una palabra. Eso cuenta.",
+      "gift": "Piensa en el nombre de alguien. Eso cuenta.",
+      "snap": "Abre la cámara, toma una foto por la ventana. Eso cuenta.",
+      "brew": "Saca una taza. Eso cuenta.",
+      "article": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "move": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "gym": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "photo": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "video": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "say": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "contact": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "make": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "boil": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "dish": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "organize": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "lie": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "song": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "water_plant": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "flower": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "plant": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "wash": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "rinse": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "face": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "laugh": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "watch": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "show": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "movie": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "drink_water": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "door": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "browse": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "ponder": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "consider": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "doodle": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "color": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "piano": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "instrument": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "buy": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "item": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "patch": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "arrange": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "mail": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "package": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "letter": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "trip": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "play": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "quiet": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "check": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "find": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "prepare": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "ready": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "camera": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "photograph": "Solo haz los primeros 5 minutos. Eso cuenta.",
+      "beverage": "Solo haz los primeros 5 minutos. Eso cuenta."
+    },
+    "fallback": "Solo haz los primeros 5 minutos. Eso cuenta."
+  }
+}

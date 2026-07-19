@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Warm color palette (shared with SPA src/index.css) */
+:root {
+  --warm-bg: #faf6f1;
+  --warm-card: #fffdfb;
+  --warm-text: #4a4036;
+  --warm-muted: #8c7e6e;
+  --warm-accent: #c4a882;
+  --warm-accent-soft: #e8ddd0;
+  --warm-border: #e5ddd3;
+  --breath-color: rgba(196, 168, 130, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background: var(--warm-bg);
+  color: var(--warm-text);
+  min-height: 100vh;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* Western language font stack */
+body[data-lang="en"],
+body[data-lang="es"] {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Breathing animation (same keyframes as SPA) */
+@keyframes breathe {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+.breath-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+/* CSS fade-in (replaces Framer Motion for static pages) */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in-delay-1 { animation-delay: 0.4s; }
+.fade-in-delay-2 { animation-delay: 0.8s; }
+.fade-in-delay-3 { animation-delay: 1.2s; }
+.fade-in-delay-4 { animation-delay: 1.6s; }
+.fade-in-delay-5 { animation-delay: 2.0s; }

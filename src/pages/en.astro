@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import en from "../i18n/locales/en.json";
+
+const pageTitle = "A place where you don't need to perform";
+const description = "NiceP — a pressure-free digital space. No scoring, no comparison, no obligation. Just stay for a while.";
+const alternates = { "zh-CN": "/", "en": "/en", "es": "/es" };
+
+const layers = [
+  { size: 600, duration: 8, delay: 0, opacity: 0.15 },
+  { size: 450, duration: 7, delay: 2, opacity: 0.12 },
+  { size: 350, duration: 9, delay: 4, opacity: 0.08 },
+  { size: 250, duration: 6, delay: 1, opacity: 0.06 },
+];
+const accentColor = "196, 168, 130";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is NiceP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NiceP is a free online relaxation space. When you feel anxious, tired, or lost, it offers a quiet place to pause and breathe. No meditation required, no check-ins, no 'productive' activities."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to sign up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Open it and use it. Free, no registration, no personal data collected."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is NiceP for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anyone who needs a mental break — stressed office workers, anxious students, or anyone who needs emotional rest. Available in Chinese, English, and Spanish."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  lang="en"
+  ogLocale="en_US"
+  canonicalPath="/en"
+  hreflangAlternates={alternates}
+>
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Breath Background -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    {layers.map((layer) => (
+      <div
+        class="breath-circle"
+        style={`width:${layer.size}px;height:${layer.size}px;background:radial-gradient(circle, rgba(${accentColor},${layer.opacity}) 0%, transparent 70%);animation:breathe ${layer.duration}s ease-in-out ${layer.delay}s infinite;`}
+      />
+    ))}
+  </div>
+
+  <!-- Language Switcher -->
+  <nav class="fixed top-4 right-4 z-10 flex gap-1.5">
+    <a href="/" class="rounded-lg px-2 py-1 text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);border:1px solid transparent;text-decoration:none;">中文</a>
+    <span class="rounded-lg px-2 py-1 text-xs" style="background:var(--warm-accent-soft);color:var(--warm-text);border:1px solid var(--warm-accent);">EN</span>
+    <a href="/es" class="rounded-lg px-2 py-1 text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);border:1px solid transparent;text-decoration:none;">ES</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 w-full max-w-[560px] px-6 py-10 min-h-screen flex flex-col justify-center mx-auto">
+
+    <!-- Hero -->
+    <div class="flex flex-col gap-2 mb-8">
+      <h1 class="text-2xl font-normal tracking-wide fade-in fade-in-delay-1" style="color:var(--warm-text);">{en.home.title1}</h1>
+      <h1 class="text-2xl font-normal tracking-wide fade-in fade-in-delay-2" style="color:var(--warm-text);">{en.home.title2}</h1>
+      <h1 class="text-2xl font-normal tracking-wide fade-in fade-in-delay-3" style="color:var(--warm-text);">{en.home.title3}</h1>
+    </div>
+
+    <!-- Tagline -->
+    <p class="text-base leading-8 mb-10 fade-in fade-in-delay-4" style="color:var(--warm-muted);">{description}</p>
+
+    <!-- Feature cards -->
+    <div class="flex flex-col gap-4 mb-10 fade-in fade-in-delay-4">
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">Breathing guidance · Permission exercises · Tiny actions</p>
+      </div>
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">No scoring · No comparison · No pressure</p>
+      </div>
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">Free · No signup · Open and use</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="/app"
+      class="fade-in fade-in-delay-5 w-full rounded-2xl border px-6 py-4 text-center text-base transition-all duration-500 hover:-translate-y-px block"
+      style="background:var(--warm-accent-soft);border-color:var(--warm-accent);color:var(--warm-text);text-decoration:none;">
+      Enter this space →
+    </a>
+
+    <!-- Blog link -->
+    <div class="mt-8 text-center fade-in fade-in-delay-5">
+      <a href="/blog" class="text-xs" style="color:var(--warm-muted);text-decoration:none;opacity:0.6;">
+        Read our relaxation guides →
+      </a>
+    </div>
+
+    <!-- SEO content -->
+    <section class="mt-16 fade-in fade-in-delay-5">
+      <h2 class="text-lg font-normal mb-4" style="color:var(--warm-text);">About NiceP</h2>
+      <p class="text-sm leading-7 mb-4" style="color:var(--warm-muted);">
+        NiceP is a free online space designed to help you slow down. When you feel anxious, exhausted, or overwhelmed, it offers a quiet place to pause and breathe. No meditation required, no check-ins, no "productive" activities expected.
+      </p>
+      <p class="text-sm leading-7 mb-4" style="color:var(--warm-muted);">
+        There are no scores, no progress bars, no leaderboards. We don't collect your data or ask you to check in daily. This isn't a "self-improvement tool" — it's a place that allows you to just be, for a while.
+      </p>
+      <p class="text-sm leading-7" style="color:var(--warm-muted);">
+        For anyone who needs a mental break — stressed office workers, anxious students, or anyone who needs emotional rest. Available in Chinese, English, and Spanish.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

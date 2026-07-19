@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+
+const pageTitle = "NiceP — Free Online Breathing Exercises (No App Needed)";
+const description = "Simple breathing exercises to calm your mind. Free, no signup, no app download. Just open your browser and breathe with NiceP.";
+
+const layers = [
+  { size: 600, duration: 8, delay: 0, opacity: 0.15 },
+  { size: 450, duration: 7, delay: 2, opacity: 0.12 },
+  { size: 350, duration: 9, delay: 4, opacity: 0.08 },
+  { size: 250, duration: 6, delay: 1, opacity: 0.06 },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What breathing technique does NiceP use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NiceP uses a gentle body-awareness approach: instead of counting breaths or following complex patterns, you simply notice your breathing alongside a soft pulsing circle. The rhythm is slow (6-9 second cycles) to naturally slow your breathing without forcing it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a breathing session take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The breathing exercise takes about 3 breaths — less than a minute. It's part of a longer gentle flow (3-5 minutes total) that includes body awareness and permission exercises. You can leave at any time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to download an app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. NiceP runs entirely in your browser. No download, no install, no account needed. Works on phone, tablet, or desktop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can breathing exercises really help with stress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Research in clinical psychology shows that slow, diaphragmatic breathing activates the parasympathetic nervous system, reducing cortisol levels and heart rate. Even 3 slow breaths can begin to shift your body from fight-or-flight to rest-and-digest mode."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  lang="en"
+  ogLocale="en_US"
+  canonicalPath="/breathe"
+  hreflangAlternates={{ "en": "/breathe" }}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Breath Background -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    {layers.map((layer) => (
+      <div
+        class="breath-circle"
+        style={`width:${layer.size}px;height:${layer.size}px;background:radial-gradient(circle, rgba(196, 168, 130,${layer.opacity}) 0%, transparent 70%);animation:breathe ${layer.duration}s ease-in-out ${layer.delay}s infinite;`}
+      />
+    ))}
+  </div>
+
+  <!-- Back link -->
+  <nav class="fixed top-4 left-4 z-10">
+    <a href="/" class="text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);text-decoration:none;">← Home</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 w-full max-w-[560px] px-6 py-10 min-h-screen flex flex-col justify-center mx-auto">
+
+    <!-- Hero -->
+    <div class="mb-8 fade-in fade-in-delay-1">
+      <h1 class="text-2xl font-normal tracking-wide mb-2" style="color:var(--warm-text);">Just breathe.</h1>
+      <h1 class="text-2xl font-normal tracking-wide" style="color:var(--warm-text);">That's all you need to do.</h1>
+    </div>
+
+    <p class="text-base leading-8 mb-10 fade-in fade-in-delay-2" style="color:var(--warm-muted);">
+      No counting. No complex patterns. No apps to download. NiceP offers a simple breathing guide — a soft pulsing circle that helps you slow down, naturally.
+    </p>
+
+    <!-- Visual breathing demo (static) -->
+    <div class="flex justify-center mb-10 fade-in fade-in-delay-3">
+      <div class="relative w-40 h-40">
+        <div class="breath-circle" style="width:160px;height:160px;background:radial-gradient(circle, rgba(196, 168, 130, 0.2) 0%, transparent 70%);animation:breathe 8s ease-in-out 0s infinite;top:50%;left:50%;"></div>
+        <div class="breath-circle" style="width:120px;height:120px;background:radial-gradient(circle, rgba(196, 168, 130, 0.15) 0%, transparent 70%);animation:breathe 8s ease-in-out 0.5s infinite;top:50%;left:50%;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs" style="color:var(--warm-muted);">breathe</div>
+      </div>
+    </div>
+
+    <!-- How the breathing guide works -->
+    <h2 class="text-lg font-normal mb-6 fade-in fade-in-delay-3" style="color:var(--warm-text);">How the breathing guide works</h2>
+
+    <div class="flex flex-col gap-4 mb-10">
+      <div class="rounded-2xl border px-6 py-5 fade-in fade-in-delay-3" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm font-medium mb-1" style="color:var(--warm-text);">Notice, don't control</p>
+        <p class="text-sm" style="color:var(--warm-muted);">Instead of forcing a breathing pattern, NiceP asks you to simply notice your breath — where you feel it, how it moves. The circle is just a gentle companion.</p>
+      </div>
+
+      <div class="rounded-2xl border px-6 py-5 fade-in fade-in-delay-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm font-medium mb-1" style="color:var(--warm-text);">Body anchors</p>
+        <p class="text-sm" style="color:var(--warm-muted);">You'll be guided to notice your shoulders, feet, palms, or belly. This somatic grounding technique brings your attention out of racing thoughts and into your body.</p>
+      </div>
+
+      <div class="rounded-2xl border px-6 py-5 fade-in fade-in-delay-5" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm font-medium mb-1" style="color:var(--warm-text);">Slow rhythm</p>
+        <p class="text-sm" style="color:var(--warm-muted);">The breathing circle pulses at 6-9 second cycles — slower than your natural breath. Without trying, your breathing naturally slows to match.</p>
+      </div>
+    </div>
+
+    <!-- Science note -->
+    <h2 class="text-lg font-normal mb-4 fade-in fade-in-delay-5" style="color:var(--warm-text);">Why it works</h2>
+    <p class="text-sm leading-7 mb-4 fade-in fade-in-delay-5" style="color:var(--warm-muted);">
+      Slow, diaphragmatic breathing activates the parasympathetic nervous system — your body's natural "rest and digest" mode. Research shows that even a few slow breaths can reduce cortisol levels, lower heart rate, and shift you from fight-or-flight to calm.
+    </p>
+    <p class="text-sm leading-7 mb-10 fade-in fade-in-delay-5" style="color:var(--warm-muted);">
+      NiceP doesn't ask you to meditate or achieve a "zen state." It just gives you a soft, warm circle and says: follow this for three breaths. That's enough.
+    </p>
+
+    <!-- CTA -->
+    <a href="/app"
+      class="fade-in fade-in-delay-5 w-full rounded-2xl border px-6 py-4 text-center text-base transition-all duration-500 hover:-translate-y-px block"
+      style="background:var(--warm-accent-soft);border-color:var(--warm-accent);color:var(--warm-text);text-decoration:none;">
+      Try the breathing guide →
+    </a>
+  </main>
+</BaseLayout>

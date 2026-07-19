@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+
+const pageTitle = "NiceP Blog — Gentle Guides for Relaxation & Stress Relief";
+const description = "Simple, research-backed guides on breathing, relaxation, and gentle living. No wellness jargon, no pressure to 'optimize' yourself.";
+
+const layers = [
+  { size: 600, duration: 8, delay: 0, opacity: 0.10 },
+  { size: 450, duration: 7, delay: 2, opacity: 0.08 },
+];
+
+// Blog posts data (will be replaced with content collections later)
+const posts = [
+  {
+    title: "5 Breathing Exercises to Calm Your Mind in 2 Minutes",
+    description: "Simple breathing techniques that work fast — no meditation experience needed. Backed by research on the parasympathetic nervous system.",
+    date: "2026-07-19",
+    category: "Relaxation",
+    readingTime: "4 min read",
+    slug: "breathing-exercises-to-calm-your-mind",
+  },
+  {
+    title: "How to Relax After a Long Day (Without Scrolling)",
+    description: "Why scrolling doesn't help you unwind, and 5 gentle alternatives that actually work — starting with doing almost nothing.",
+    date: "2026-07-19",
+    category: "Stress Relief",
+    readingTime: "5 min read",
+    slug: "how-to-relax-after-work",
+  },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  lang="en"
+  ogLocale="en_US"
+  canonicalPath="/blog"
+  hreflangAlternates={{ "en": "/blog" }}
+>
+  <!-- Breath Background (subtle) -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    {layers.map((layer) => (
+      <div
+        class="breath-circle"
+        style={`width:${layer.size}px;height:${layer.size}px;background:radial-gradient(circle, rgba(196, 168, 130,${layer.opacity}) 0%, transparent 70%);animation:breathe ${layer.duration}s ease-in-out ${layer.delay}s infinite;`}
+      />
+    ))}
+  </div>
+
+  <!-- Back link -->
+  <nav class="fixed top-4 left-4 z-10">
+    <a href="/" class="text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);text-decoration:none;">← Home</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 w-full max-w-[640px] px-6 py-16 mx-auto">
+    <h1 class="text-2xl font-normal tracking-wide mb-2 fade-in fade-in-delay-1" style="color:var(--warm-text);">NiceP Blog</h1>
+    <p class="text-sm mb-12 fade-in fade-in-delay-2" style="color:var(--warm-muted);">
+      Gentle guides for relaxation and stress relief. No wellness jargon, no pressure to "optimize" yourself.
+    </p>
+
+    <div class="flex flex-col gap-6">
+      {posts.map((post, i) => (
+        <a href={`/blog/${post.slug}`}
+          class="rounded-2xl border px-6 py-6 transition-all duration-500 hover:-translate-y-px block fade-in"
+          style={`background:var(--warm-card);border-color:var(--warm-border);text-decoration:none;animation-delay:${0.4 + i * 0.3}s;`}>
+          <div class="flex gap-3 mb-3">
+            <span class="text-xs rounded-full px-3 py-0.5" style="background:var(--warm-accent-soft);color:var(--warm-accent);">{post.category}</span>
+            <span class="text-xs" style="color:var(--warm-muted);">{post.readingTime}</span>
+          </div>
+          <h2 class="text-lg font-normal mb-2" style="color:var(--warm-text);">{post.title}</h2>
+          <p class="text-sm" style="color:var(--warm-muted);">{post.description}</p>
+          <p class="text-xs mt-3" style="color:var(--warm-muted);opacity:0.6;">
+            {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+        </a>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

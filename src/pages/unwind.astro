@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+
+const pageTitle = "NiceP — How to Unwind When Everything Feels Like Too Much";
+const description = "A free, gentle space to unwind after work, before bed, or anytime you feel overwhelmed. No meditation, no apps to install. Just breathe and be.";
+
+const layers = [
+  { size: 600, duration: 8, delay: 0, opacity: 0.15 },
+  { size: 450, duration: 7, delay: 2, opacity: 0.12 },
+  { size: 350, duration: 9, delay: 4, opacity: 0.08 },
+  { size: 250, duration: 6, delay: 1, opacity: 0.06 },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I unwind after a stressful day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with something that requires almost zero effort. NiceP is designed for this: you choose how you feel, follow a gentle breathing prompt, and allow yourself to not 'do' anything for 3-5 minutes. No meditation, no journaling, no productivity apps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do when I feel overwhelmed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you feel overwhelmed, the most helpful thing is often to stop and notice your body — your shoulders, your feet, your breathing. NiceP guides you through gentle body-awareness exercises that ground you in the present moment without requiring any effort."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is NiceP a therapy or counseling tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. NiceP is not a replacement for professional mental health support. It's a gentle relaxation space — think of it as a digital quiet room, not a treatment. If you're struggling with persistent anxiety or depression, please seek professional help."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use NiceP before bed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. NiceP is especially useful as a wind-down routine before sleep. The warm colors, slow breathing rhythm, and gentle prompts help shift your body into rest mode. The whole experience takes 3-5 minutes — perfect for a bedtime ritual."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  lang="en"
+  ogLocale="en_US"
+  canonicalPath="/unwind"
+  hreflangAlternates={{ "en": "/unwind" }}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Breath Background -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    {layers.map((layer) => (
+      <div
+        class="breath-circle"
+        style={`width:${layer.size}px;height:${layer.size}px;background:radial-gradient(circle, rgba(196, 168, 130,${layer.opacity}) 0%, transparent 70%);animation:breathe ${layer.duration}s ease-in-out ${layer.delay}s infinite;`}
+      />
+    ))}
+  </div>
+
+  <!-- Back link -->
+  <nav class="fixed top-4 left-4 z-10">
+    <a href="/" class="text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);text-decoration:none;">← Home</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 w-full max-w-[560px] px-6 py-10 min-h-screen flex flex-col justify-center mx-auto">
+
+    <!-- Hero -->
+    <div class="mb-8 fade-in fade-in-delay-1">
+      <h1 class="text-2xl font-normal tracking-wide mb-2" style="color:var(--warm-text);">Unwind without trying.</h1>
+      <h1 class="text-2xl font-normal tracking-wide" style="color:var(--warm-text);">You've already done enough today.</h1>
+    </div>
+
+    <p class="text-base leading-8 mb-10 fade-in fade-in-delay-2" style="color:var(--warm-muted);">
+      When everything feels like too much, the most helpful thing isn't another to-do list or productivity hack. It's a quiet space where nothing is expected of you. That's NiceP.
+    </p>
+
+    <!-- Signs you need to unwind -->
+    <h2 class="text-lg font-normal mb-6 fade-in fade-in-delay-3" style="color:var(--warm-text);">You might need this if…</h2>
+
+    <div class="flex flex-col gap-3 mb-10 fade-in fade-in-delay-3">
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">Your mind won't stop racing, even when your body is exhausted</p>
+      </div>
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">You feel busy all day but can't name what you actually accomplished</p>
+      </div>
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">The thought of "relaxing" feels like another task on your list</p>
+      </div>
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">You scroll your phone at night but never feel rested afterward</p>
+      </div>
+    </div>
+
+    <!-- What NiceP offers -->
+    <h2 class="text-lg font-normal mb-6 fade-in fade-in-delay-4" style="color:var(--warm-text);">What NiceP offers instead</h2>
+
+    <div class="flex flex-col gap-4 mb-10 fade-in fade-in-delay-4">
+      <div class="flex items-start gap-3">
+        <span style="color:var(--warm-accent);">✦</span>
+        <div>
+          <p class="text-sm font-medium" style="color:var(--warm-text);">Body-first, not mind-first</p>
+          <p class="text-sm" style="color:var(--warm-muted);">Instead of "think positive thoughts," NiceP guides you to notice your shoulders, your feet, your breath. Grounding, not thinking.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span style="color:var(--warm-accent);">✦</span>
+        <div>
+          <p class="text-sm font-medium" style="color:var(--warm-text);">Permission, not pressure</p>
+          <p class="text-sm" style="color:var(--warm-muted);">"I allow myself not to know the direction." "I allow myself to rest." These aren't affirmations — they're permissions to stop performing.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span style="color:var(--warm-accent);">✦</span>
+        <div>
+          <p class="text-sm font-medium" style="color:var(--warm-text);">Tiny, not transformative</p>
+          <p class="text-sm" style="color:var(--warm-muted);">No "life-changing" promises. Just 3-5 minutes of quiet. If you leave feeling even slightly lighter, that's enough.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- When to use -->
+    <h2 class="text-lg font-normal mb-4 fade-in fade-in-delay-5" style="color:var(--warm-text);">When to use NiceP</h2>
+    <div class="flex flex-col gap-3 mb-10 fade-in fade-in-delay-5">
+      <div class="flex gap-3 items-center">
+        <span class="text-sm" style="color:var(--warm-accent);">🌙</span>
+        <p class="text-sm" style="color:var(--warm-muted);"><strong style="color:var(--warm-text);">Before bed</strong> — a 3-minute wind-down to shift from doing to resting</p>
+      </div>
+      <div class="flex gap-3 items-center">
+        <span class="text-sm" style="color:var(--warm-accent);">☕</span>
+        <p class="text-sm" style="color:var(--warm-muted);"><strong style="color:var(--warm-text);">After work</strong> — transition from work mode to personal time</p>
+      </div>
+      <div class="flex gap-3 items-center">
+        <span class="text-sm" style="color:var(--warm-accent);">🫁</span>
+        <p class="text-sm" style="color:var(--warm-muted);"><strong style="color:var(--warm-text);">Anytime</strong> — when you just need a moment to breathe</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="/app"
+      class="fade-in fade-in-delay-5 w-full rounded-2xl border px-6 py-4 text-center text-base transition-all duration-500 hover:-translate-y-px block"
+      style="background:var(--warm-accent-soft);border-color:var(--warm-accent);color:var(--warm-text);text-decoration:none;">
+      Unwind now →
+    </a>
+  </main>
+</BaseLayout>

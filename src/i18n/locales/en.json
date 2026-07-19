@@ -1,0 +1,251 @@
+{
+  "home": {
+    "title1": "You haven't lost your sense of meaning.",
+    "title2": "You just haven't",
+    "title3": "let yourself define it yet.",
+    "statusPrompt": "How are you feeling right now?",
+    "state": {
+      "noisy": "My mind won't stop racing",
+      "empty": "I don't want to do anything, nothing feels worth it",
+      "busy": "I feel busy but don't know what for",
+      "okay": "I'm okay, just want to hang out for a bit"
+    },
+    "lastWord": "Last time you said: \"{{text}}\"",
+    "lastWordFollow": "Is that still with you?"
+  },
+  "anchor": {
+    "points": {
+      "shoulders": {
+        "text": "Now, let your shoulders sink down…",
+        "sub": "No need to force it. Just notice they're there."
+      },
+      "feet": {
+        "text": "Feel your feet against the ground…",
+        "sub": "Gravity is holding you. No extra effort needed."
+      },
+      "palms": {
+        "text": "Notice if your palms are warm or cool…",
+        "sub": "No need to change it. Just notice."
+      },
+      "abdomen": {
+        "text": "Gently place your attention on your belly…",
+        "sub": "Rising and falling with each breath."
+      },
+      "eyebrow": {
+        "text": "Notice if your brow is furrowed…",
+        "sub": "No need to smooth it. Just know it's there."
+      },
+      "back": {
+        "text": "Feel your back against the chair…",
+        "sub": "It's supporting you. You don't have to hold yourself up."
+      },
+      "breath": {
+        "text": "No need to adjust your breathing. Just notice it…",
+        "sub": "In. Out."
+      },
+      "jaw": {
+        "text": "Notice if your jaw is clenched…",
+        "sub": "No need to release it. Just notice."
+      }
+    },
+    "breathePrompt": "Follow the rhythm of this circle. Breathe three times.",
+    "ready": "I'm ready"
+  },
+  "allow": {
+    "intro": "For now, you can set aside the thought \"I must find meaning.\"",
+    "items": [
+      "I allow myself not to know the direction right now",
+      "I allow myself to be interested in just one thing for 5 minutes",
+      "I allow myself not to be in the top 5%"
+    ],
+    "allowBtn": "I allow",
+    "allowed": "Okay. Just stay here a little longer.",
+    "continue": "Continue →"
+  },
+  "acceptNarrative": {
+    "prompt1": "If no one were judging you right now, not even yourself,",
+    "prompt2": "how would you describe yourself today?",
+    "placeholder": "Say anything. There's no right or wrong here…",
+    "submit": "That's it"
+  },
+  "spark": {
+    "prompt1": "In the past week, there was a moment when you felt",
+    "promptEmphasis": "you weren't completing a task",
+    "prompt2": " — you genuinely wanted to do it.",
+    "prompt3": "Even if it was just 5 seconds.",
+    "placeholder": "What were you doing in that moment?",
+    "placeholderFallback": "Can't put it into words? That's okay. Just write one word…",
+    "submit": "That's the one"
+  },
+  "sparkBody": {
+    "recall": "You said: \"{{text}}\"",
+    "prompt": "In that moment, what did your body feel like?",
+    "placeholder": "Maybe light, warm, relaxed…",
+    "submit": "That's how it was"
+  },
+  "breakdown": {
+    "prompt1": "If doing this for 5 minutes counts as a win,",
+    "prompt2": "would you be willing to break it down to something",
+    "promptEmphasis": "absurdly small",
+    "prompt3": "?",
+    "youSaid": "What you wanted to do",
+    "tinyVersion": "The absurdly small version",
+    "encourage": "You don't need to finish it. Just allow yourself to start.",
+    "submit": "I can do this"
+  },
+  "done": {
+    "prompt1": "If you've already done that \"absurdly small\" thing,",
+    "prompt2": "or just allowed yourself to be here —",
+    "didIt": "I did it",
+    "rest": "Haven't done it yet, but I'd like to rest first"
+  },
+  "socratic": {
+    "question": "You used the word \"{{word}}\" just now —\nIf you couldn't use that word, how would you describe this?",
+    "placeholder": "Take your time. No rush to find the answer…",
+    "submit": "Put another way, it's like this"
+  },
+  "exit": {
+    "feltLighter": "I feel a little lighter today",
+    "feltLighterDone": "✓ A little lighter today",
+    "stayMore": "Stay a little longer",
+    "leave": "I'm leaving",
+    "quotes": {
+      "acceptSelfDesc": "\"{{text}}\" — that's how you described yourself today.\nYou see, meaning isn't something you think into being.\nIt's something you live out,\nright there in your answer.",
+      "acceptAllowedUnknown": "Today you allowed yourself to \"not know\" — and that itself is a kind of clarity.",
+      "acceptStay": "Okay. Stay a little longer. No one will rush you here.",
+      "acceptDefine": "You haven't lost your sense of meaning. You just haven't let yourself define it yet.",
+      "sparkRecall": "You remember that moment of \"{{text}}...\" — meaning isn't at the finish line. It's in the second you allow yourself to think \"this is enough.\"",
+      "sparkDone": "This week, you allowed yourself to live like this once. Nothing more is needed.",
+      "sparkNotYet": "Haven't done it yet — that's okay too. Allow yourself to just be here.",
+      "meaningLived": "You see, meaning isn't something you think into being.\nIt's something you live out,\nright there in your answer.",
+      "socraticReframe": "You said \"{{text}}...\" — see? Change one word, and the whole thing looks different."
+    }
+  },
+  "stay": {
+    "breathe1": "Just breathe.",
+    "breathe2": "Nothing needs to be done.",
+    "leave": "I'm leaving"
+  },
+  "wordsWall": {
+    "title": "Your words",
+    "back": "Back",
+    "empty1": "You haven't left any words yet.",
+    "empty2": "That's okay. You can always come back.",
+    "recentDays": "Words from the last {{count}} days",
+    "accept": "Acceptance",
+    "spark": "Spark",
+    "socratic": "Reframed",
+    "export": "Export as text"
+  },
+  "memory": {
+    "negativeWords": [
+      "failure",
+      "useless",
+      "pointless",
+      "terrible",
+      "can't",
+      "awful",
+      "regret",
+      "worthless",
+      "nothing",
+      "waste"
+    ],
+    "exportAccept": "[Acceptance]",
+    "exportSpark": "[Spark]",
+    "exportSocraticPrefix": "Reframed: "
+  },
+  "tinyVersions": {
+    "keywords": {
+      "write": "Open a document, write one sentence. That counts.",
+      "text": "Open a document, write one sentence. That counts.",
+      "journal": "Open a document, write one sentence. That counts.",
+      "run": "Put on your shoes, stand at the door. That counts.",
+      "walk": "Put on your shoes, stand at the door. That counts.",
+      "exercise": "Put on your shoes, stand at the door. That counts.",
+      "draw": "Pick up a pen or your phone, make one gesture. That counts.",
+      "read": "Open a book, read one line. That counts.",
+      "book": "Open a book, read one line. That counts.",
+      "phone": "Open your contacts, find a name. That counts.",
+      "chat": "Open your contacts, find a name. That counts.",
+      "study": "Open that page or video, watch for 30 seconds. That counts.",
+      "practice": "Open that page or video, watch for 30 seconds. That counts.",
+      "eat": "Take out the ingredients, put them on the counter. That counts.",
+      "clean": "Pick up one thing, put it back where it belongs. That counts.",
+      "tidy": "Pick up one thing, put it back where it belongs. That counts.",
+      "sleep": "Close your eyes, take three deep breaths. That counts.",
+      "rest": "Close your eyes, take three deep breaths. That counts.",
+      "music": "Open a player, pick a song. That counts.",
+      "listen": "Open a player, pick a song. That counts.",
+      "water": "Boil a kettle. That counts.",
+      "tea": "Boil a kettle. That counts.",
+      "coffee": "Boil a kettle. That counts.",
+      "go": "Put on your jacket, open the door. That counts.",
+      "door": "Put on your jacket, open the door. That counts.",
+      "think": "Take a piece of paper, write down one word. That counts.",
+      "plan": "Take a piece of paper, write down one step. That counts.",
+      "sing": "Hum a line. That counts.",
+      "play": "Open the lid, play one note. That counts.",
+      "shop": "Make a list, write down one thing. That counts.",
+      "fix": "Find the tools, put them nearby. That counts.",
+      "deliver": "Write down the recipient's name. That counts.",
+      "journey": "Open a map, look at one place. That counts.",
+      "yoga": "Unroll the mat, sit on it. That counts.",
+      "meditate": "Unroll the mat, sit on it. That counts.",
+      "email": "Open your inbox, write one line of greeting. That counts.",
+      "search": "Open a search engine, type one word. That counts.",
+      "gift": "Think of someone's name. That counts.",
+      "snap": "Open the camera, take one shot out the window. That counts.",
+      "brew": "Take out a cup. That counts.",
+      "article": "Just do the first 5 minutes of it. That counts.",
+      "move": "Just do the first 5 minutes of it. That counts.",
+      "gym": "Just do the first 5 minutes of it. That counts.",
+      "photo": "Just do the first 5 minutes of it. That counts.",
+      "video": "Just do the first 5 minutes of it. That counts.",
+      "say": "Just do the first 5 minutes of it. That counts.",
+      "contact": "Just do the first 5 minutes of it. That counts.",
+      "make": "Just do the first 5 minutes of it. That counts.",
+      "boil": "Just do the first 5 minutes of it. That counts.",
+      "dish": "Just do the first 5 minutes of it. That counts.",
+      "organize": "Just do the first 5 minutes of it. That counts.",
+      "lie": "Just do the first 5 minutes of it. That counts.",
+      "song": "Just do the first 5 minutes of it. That counts.",
+      "water_plant": "Just do the first 5 minutes of it. That counts.",
+      "flower": "Just do the first 5 minutes of it. That counts.",
+      "plant": "Just do the first 5 minutes of it. That counts.",
+      "wash": "Just do the first 5 minutes of it. That counts.",
+      "rinse": "Just do the first 5 minutes of it. That counts.",
+      "face": "Just do the first 5 minutes of it. That counts.",
+      "laugh": "Just do the first 5 minutes of it. That counts.",
+      "watch": "Just do the first 5 minutes of it. That counts.",
+      "show": "Just do the first 5 minutes of it. That counts.",
+      "movie": "Just do the first 5 minutes of it. That counts.",
+      "drink_water": "Just do the first 5 minutes of it. That counts.",
+      "stroll": "Just do the first 5 minutes of it. That counts.",
+      "browse": "Just do the first 5 minutes of it. That counts.",
+      "ponder": "Just do the first 5 minutes of it. That counts.",
+      "consider": "Just do the first 5 minutes of it. That counts.",
+      "doodle": "Just do the first 5 minutes of it. That counts.",
+      "color": "Just do the first 5 minutes of it. That counts.",
+      "strum": "Just do the first 5 minutes of it. That counts.",
+      "piano": "Just do the first 5 minutes of it. That counts.",
+      "instrument": "Just do the first 5 minutes of it. That counts.",
+      "buy": "Just do the first 5 minutes of it. That counts.",
+      "item": "Just do the first 5 minutes of it. That counts.",
+      "patch": "Just do the first 5 minutes of it. That counts.",
+      "arrange": "Just do the first 5 minutes of it. That counts.",
+      "mail": "Just do the first 5 minutes of it. That counts.",
+      "package": "Just do the first 5 minutes of it. That counts.",
+      "letter": "Just do the first 5 minutes of it. That counts.",
+      "trip": "Just do the first 5 minutes of it. That counts.",
+      "quiet": "Just do the first 5 minutes of it. That counts.",
+      "check": "Just do the first 5 minutes of it. That counts.",
+      "find": "Just do the first 5 minutes of it. That counts.",
+      "prepare": "Just do the first 5 minutes of it. That counts.",
+      "ready": "Just do the first 5 minutes of it. That counts.",
+      "camera": "Just do the first 5 minutes of it. That counts.",
+      "photograph": "Just do the first 5 minutes of it. That counts.",
+      "beverage": "Just do the first 5 minutes of it. That counts."
+    },
+    "fallback": "Just do the first 5 minutes of it. That counts."
+  }
+}

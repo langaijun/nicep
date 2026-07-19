@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import es from "../i18n/locales/es.json";
+
+const pageTitle = "Un lugar donde no necesitas demostrar nada";
+const description = "NiceP — un espacio digital sin presión. Sin puntuaciones, sin comparaciones, sin obligaciones. Solo quédate un rato.";
+const alternates = { "zh-CN": "/", "en": "/en", "es": "/es" };
+
+const layers = [
+  { size: 600, duration: 8, delay: 0, opacity: 0.15 },
+  { size: 450, duration: 7, delay: 2, opacity: 0.12 },
+  { size: 350, duration: 9, delay: 4, opacity: 0.08 },
+  { size: 250, duration: 6, delay: 1, opacity: 0.06 },
+];
+const accentColor = "196, 168, 130";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es NiceP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NiceP es un espacio gratuito de relajación en línea. Cuando te sientes ansioso, cansado o perdido, ofrece un lugar tranquilo para pausar y respirar. No necesitas meditar, ni registrarte, ni hacer nada 'productivo'."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito registrarme?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Ábrelo y úsalo. Gratis, sin registro, sin recopilación de datos personales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Para quién es NiceP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para cualquiera que necesite un descanso mental — trabajadores estresados, estudiantes con ansiedad, o cualquier persona que necesite un respiro emocional. Disponible en chino, inglés y español."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  lang="es"
+  ogLocale="es_ES"
+  canonicalPath="/es"
+  hreflangAlternates={alternates}
+>
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Breath Background -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    {layers.map((layer) => (
+      <div
+        class="breath-circle"
+        style={`width:${layer.size}px;height:${layer.size}px;background:radial-gradient(circle, rgba(${accentColor},${layer.opacity}) 0%, transparent 70%);animation:breathe ${layer.duration}s ease-in-out ${layer.delay}s infinite;`}
+      />
+    ))}
+  </div>
+
+  <!-- Language Switcher -->
+  <nav class="fixed top-4 right-4 z-10 flex gap-1.5">
+    <a href="/" class="rounded-lg px-2 py-1 text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);border:1px solid transparent;text-decoration:none;">中文</a>
+    <a href="/en" class="rounded-lg px-2 py-1 text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);border:1px solid transparent;text-decoration:none;">EN</a>
+    <span class="rounded-lg px-2 py-1 text-xs" style="background:var(--warm-accent-soft);color:var(--warm-text);border:1px solid var(--warm-accent);">ES</span>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 w-full max-w-[560px] px-6 py-10 min-h-screen flex flex-col justify-center mx-auto">
+
+    <!-- Hero -->
+    <div class="flex flex-col gap-2 mb-8">
+      <h1 class="text-2xl font-normal tracking-wide fade-in fade-in-delay-1" style="color:var(--warm-text);">{es.home.title1}</h1>
+      <h1 class="text-2xl font-normal tracking-wide fade-in fade-in-delay-2" style="color:var(--warm-text);">{es.home.title2}</h1>
+      <h1 class="text-2xl font-normal tracking-wide fade-in fade-in-delay-3" style="color:var(--warm-text);">{es.home.title3}</h1>
+    </div>
+
+    <!-- Tagline -->
+    <p class="text-base leading-8 mb-10 fade-in fade-in-delay-4" style="color:var(--warm-muted);">{description}</p>
+
+    <!-- Feature cards -->
+    <div class="flex flex-col gap-4 mb-10 fade-in fade-in-delay-4">
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">Guía de respiración · Ejercicios de permiso · Acciones pequeñas</p>
+      </div>
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">Sin puntuaciones · Sin comparaciones · Sin presión</p>
+      </div>
+      <div class="rounded-2xl border px-6 py-4" style="background:var(--warm-card);border-color:var(--warm-border);">
+        <p class="text-sm" style="color:var(--warm-muted);">Gratis · Sin registro · Abre y usa</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="/app"
+      class="fade-in fade-in-delay-5 w-full rounded-2xl border px-6 py-4 text-center text-base transition-all duration-500 hover:-translate-y-px block"
+      style="background:var(--warm-accent-soft);border-color:var(--warm-accent);color:var(--warm-text);text-decoration:none;">
+      Entra en este espacio →
+    </a>
+
+    <!-- Blog link -->
+    <div class="mt-8 text-center fade-in fade-in-delay-5">
+      <a href="/blog" class="text-xs" style="color:var(--warm-muted);text-decoration:none;opacity:0.6;">
+        Lee nuestras guías de relajación →
+      </a>
+    </div>
+
+    <!-- SEO content -->
+    <section class="mt-16 fade-in fade-in-delay-5">
+      <h2 class="text-lg font-normal mb-4" style="color:var(--warm-text);">Sobre NiceP</h2>
+      <p class="text-sm leading-7 mb-4" style="color:var(--warm-muted);">
+        NiceP es un espacio gratuito en línea diseñado para ayudarte a desacelerar. Cuando te sientes ansioso, agotado o abrumado, ofrece un lugar tranquilo para pausar y respirar. No necesitas meditar, ni registrarte, ni hacer nada "productivo".
+      </p>
+      <p class="text-sm leading-7 mb-4" style="color:var(--warm-muted);">
+        No hay puntuaciones, ni barras de progreso, ni tablas de clasificación. No recopilamos tus datos ni te pedimos que te registres diariamente. Esto no es una "herramienta de mejora personal" — es un lugar que te permite simplemente estar, por un rato.
+      </p>
+      <p class="text-sm leading-7" style="color:var(--warm-muted);">
+        Para cualquiera que necesite un descanso mental — trabajadores estresados, estudiantes con ansiedad, o cualquier persona que necesite un respiro emocional. Disponible en chino, inglés y español.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

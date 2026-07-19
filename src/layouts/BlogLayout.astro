@@ -1,0 +1,85 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  readingTime: string;
+  canonicalPath: string;
+}
+
+const { title, description, date, category, readingTime, canonicalPath } = Astro.props;
+const siteUrl = "https://nicep.vercel.app";
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": date,
+  "author": {
+    "@type": "Organization",
+    "name": "NiceP"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "NiceP",
+    "url": siteUrl
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": siteUrl + canonicalPath
+  }
+};
+---
+
+<BaseLayout
+  title={`${title} — NiceP`}
+  description={description}
+  lang="en"
+  ogLocale="en_US"
+  canonicalPath={canonicalPath}
+  hreflangAlternates={{ "en": canonicalPath }}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <!-- Back link -->
+  <nav class="fixed top-4 left-4 z-10">
+    <a href="/blog" class="text-xs opacity-60 hover:opacity-100 transition-opacity" style="color:var(--warm-muted);text-decoration:none;">← Blog</a>
+  </nav>
+
+  <!-- Article -->
+  <article class="relative z-10 w-full max-w-[640px] px-6 py-16 mx-auto">
+    <!-- Category + meta -->
+    <div class="mb-6 fade-in fade-in-delay-1">
+      <span class="text-xs rounded-full px-3 py-1" style="background:var(--warm-accent-soft);color:var(--warm-accent);">{category}</span>
+      <div class="flex gap-3 mt-3 text-xs" style="color:var(--warm-muted);">
+        <time datetime={date}>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>·</span>
+        <span>{readingTime}</span>
+      </div>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-2xl font-normal tracking-wide leading-relaxed mb-6 fade-in fade-in-delay-2" style="color:var(--warm-text);">
+      {title}
+    </h1>
+
+    <!-- Content -->
+    <div class="text-sm leading-8 space-y-5 fade-in fade-in-delay-3" style="color:var(--warm-muted);">
+      <slot />
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 pt-8 border-t fade-in fade-in-delay-4" style="border-color:var(--warm-border);">
+      <p class="text-sm mb-4" style="color:var(--warm-text);">Ready to take a break?</p>
+      <a href="/app"
+        class="w-full rounded-2xl border px-6 py-4 text-center text-base transition-all duration-500 hover:-translate-y-px block"
+        style="background:var(--warm-accent-soft);border-color:var(--warm-accent);color:var(--warm-text);text-decoration:none;">
+        Enter the quiet space →
+      </a>
+    </div>
+  </article>
+</BaseLayout>
